@@ -88,6 +88,8 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     ORDER BY strike_rate DESC
     LIMIT 10;
     ```
+    ![t1 a](https://github.com/user-attachments/assets/552aca4e-e3f1-4d7e-aca8-407ab14823e3)
+    ![t1 b](https://github.com/user-attachments/assets/eda30633-5eac-4df6-bbe9-50f2524a1093)
 
 2. **Top Bowlers by Economy**:
 
@@ -102,6 +104,9 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     ORDER BY economy ASC
     LIMIT 10;
     ```
+    ![t2 a](https://github.com/user-attachments/assets/f3acd43b-1626-4ea0-8177-291cf6516050)
+    ![t2 b](https://github.com/user-attachments/assets/6d29c718-e416-421d-98d4-a83e22118b7d)
+   
 3. **Hard-hitting players**:
 
     ```sql
@@ -119,6 +124,9 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     having count(distinct id)>28
     order by boundries_percentage desc limit 10;
 
+    ![t3 a](https://github.com/user-attachments/assets/8dd773ed-7780-4ba0-b782-afc512fffaf2)
+    ![t3 b](https://github.com/user-attachments/assets/ceee4ccc-7c66-4a0a-8763-f21e08150940)
+
 4. **bowlers with good economy**:
 
     ```sql
@@ -132,6 +140,9 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     order by a.economy desc
     limit 10;
 
+    ![t4 a](https://github.com/user-attachments/assets/b3d13394-593f-4ca2-8a6a-592d7eac2fdb)
+    ![t4 b](https://github.com/user-attachments/assets/76d7f930-4d9b-4a12-8a3a-adde55fcf94f)
+
  5. **bowlers with the best strike rate**:
 
     ```sql
@@ -142,7 +153,10 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     from ipl_ball group by bowler) as a 
     where a.total_bowled >= 500
     order by a.bowler_strike_rate desc
-    limit 10;  
+    limit 10;
+
+    ![t5 a](https://github.com/user-attachments/assets/71b2169b-05d9-4f97-a232-bf896d5e6884)
+    ![t5 b](https://github.com/user-attachments/assets/515ca667-c846-46f9-90e8-ee7026c35a6d)
 
  6. **All_rounders**:
 
@@ -156,7 +170,10 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     having count(ball)>=500) as b
     on a.bowler=b.batsman
     order by batsman_strikerate desc, bowler_strikerate desc
-    limit 10; 
+    limit 10;
+
+    ![t6 a](https://github.com/user-attachments/assets/5c893d92-9643-4240-9a86-23d1fa584c2d)
+    ![t6 b](https://github.com/user-attachments/assets/4f226eb6-4666-480c-92a7-82233897ea6c)
 
 ## Visualizations
 
