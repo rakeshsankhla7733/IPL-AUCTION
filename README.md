@@ -161,7 +161,7 @@ The project includes a variety of SQL queries to analyze the data. Here are some
 ## Visualizations
 
 The PowerPoint presentation (`ppt.pptx`) includes visualizations for the queries and their results. Open the file to view the graphs and insights derived from the data.
-
+[Uploading ppt.pptx…]()
 ## Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
