@@ -102,6 +102,61 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     ORDER BY economy ASC
     LIMIT 10;
     ```
+3. **Hard-hitting players**:
+
+    ```sql
+    select batsman,
+    round((sum(case when batsman_runs=4 then 4
+    when batsman_runs=6 then 6 
+    else 0 end)*1.0/sum(batsman_runs))*100,2) as boundries_percentage,
+    sum(case when batsman_runs= 4 then 4
+    when batsman_runs= 6 then 6 else 0 end) as boundary_total_run,
+    sum(case when batsman_runs = 4 then 1 else 0 end) as four_by_batsman,
+    sum(case when batsman_runs = 6 then 1 else 0 end) as six_by_batsman,
+    sum(batsman_runs) as batsman_total_run
+    from IPL_ball
+    group by batsman 
+    having count(distinct id)>28
+    order by boundries_percentage desc limit 10;
+
+4. **bowlers with good economy**:
+
+    ```sql
+    select * from
+    (select bowler, round((sum(total_runs)*1.0/(count(ball)/6.0)*1.0),2) as economy,
+    sum(total_runs) as total_runs,
+    count(ball) as total_balls_throw, 
+    count(ball)/6 as total_over
+    from ipl_ball group by bowler) as a 
+    where a.total_balls_throw >= 500
+    order by a.economy desc
+    limit 10;
+
+ 5. **bowlers with the best strike rate**:
+
+    ```sql
+    select * from
+    (select bowler, round((count(ball)*1.0/sum(is_wicket)*1.0),2) as bowler_strike_rate,
+    count(ball) as total_bowled,
+    sum(is_wicket) as total_wicket
+    from ipl_ball group by bowler) as a 
+    where a.total_bowled >= 500
+    order by a.bowler_strike_rate desc
+    limit 10;  
+
+ 5. **All_rounders**:
+
+    ```sql
+   select a.bowler as player, b.strike_rate as batsman_strikerate, a.strike_rate as bowler_strikerate,
+   a.total_ball from (select bowler, count(ball) as total_ball,
+   round((count(ball)*1.0/sum(is_wicket)*1.0),2) as strike_rate from ipl_ball
+   group by bowler having count(ball)>=300 order by strike_rate asc) as a
+   inner join (select batsman, round((sum(batsman_runs)*1.0/ sum(ball)*1.0)*100,2) as strike_rate from ipl_ball 
+               group by batsman
+               having count(ball)>=500) as b
+   on a.bowler=b.batsman
+   order by batsman_strikerate desc, bowler_strikerate desc
+   limit 10; 
 
 ## Visualizations
 
@@ -115,10 +170,3 @@ If you would like to contribute to this project, please fork the repository and 
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 """
-
-# Save the README.md content to a file
-file_path = "/mnt/data/README.md"
-with open(file_path, "w") as file:
-    file.write(readme_content)
-
-file_path
