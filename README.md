@@ -144,7 +144,7 @@ The project includes a variety of SQL queries to analyze the data. Here are some
     order by a.bowler_strike_rate desc
     limit 10;  
 
- 5. **All_rounders**:
+ 6. **All_rounders**:
 
     ```sql
    select a.bowler as player, b.strike_rate as batsman_strikerate, a.strike_rate as bowler_strikerate,
