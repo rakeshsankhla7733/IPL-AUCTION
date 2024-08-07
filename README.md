@@ -147,16 +147,16 @@ The project includes a variety of SQL queries to analyze the data. Here are some
  6. **All_rounders**:
 
     ```sql
-   select a.bowler as player, b.strike_rate as batsman_strikerate, a.strike_rate as bowler_strikerate,
-   a.total_ball from (select bowler, count(ball) as total_ball,
-   round((count(ball)*1.0/sum(is_wicket)*1.0),2) as strike_rate from ipl_ball
-   group by bowler having count(ball)>=300 order by strike_rate asc) as a
-   inner join (select batsman, round((sum(batsman_runs)*1.0/ sum(ball)*1.0)*100,2) as strike_rate from ipl_ball 
-   group by batsman
-   having count(ball)>=500) as b
-   on a.bowler=b.batsman
-   order by batsman_strikerate desc, bowler_strikerate desc
-   limit 10; 
+    select a.bowler as player, b.strike_rate as batsman_strikerate, a.strike_rate as bowler_strikerate,
+    a.total_ball from (select bowler, count(ball) as total_ball,
+    round((count(ball)*1.0/sum(is_wicket)*1.0),2) as strike_rate from ipl_ball
+    group by bowler having count(ball)>=300 order by strike_rate asc) as a
+    inner join (select batsman, round((sum(batsman_runs)*1.0/ sum(ball)*1.0)*100,2) as strike_rate from ipl_ball 
+    group by batsman
+    having count(ball)>=500) as b
+    on a.bowler=b.batsman
+    order by batsman_strikerate desc, bowler_strikerate desc
+    limit 10; 
 
 ## Visualizations
 
