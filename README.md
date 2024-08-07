@@ -1,7 +1,5 @@
 # IPL-AUCTION
 Historical IPL data was analyzed to develop an auction strategy for a new franchise
-# Ensure the README.md content is written to a file
-readme_content = """
 # IPL Auction SQL Project
 
 This repository contains a PostgreSQL project focused on analyzing IPL (Indian Premier League) auction data. The project includes SQL queries to perform various analyses on IPL matches and player performance, alongside visualizations presented in a PowerPoint presentation.
