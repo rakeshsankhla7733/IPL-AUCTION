@@ -152,8 +152,8 @@ The project includes a variety of SQL queries to analyze the data. Here are some
    round((count(ball)*1.0/sum(is_wicket)*1.0),2) as strike_rate from ipl_ball
    group by bowler having count(ball)>=300 order by strike_rate asc) as a
    inner join (select batsman, round((sum(batsman_runs)*1.0/ sum(ball)*1.0)*100,2) as strike_rate from ipl_ball 
-               group by batsman
-               having count(ball)>=500) as b
+   group by batsman
+   having count(ball)>=500) as b
    on a.bowler=b.batsman
    order by batsman_strikerate desc, bowler_strikerate desc
    limit 10; 
@@ -165,8 +165,3 @@ The PowerPoint presentation (`ppt.pptx`) includes visualizations for the queries
 ## Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-"""
